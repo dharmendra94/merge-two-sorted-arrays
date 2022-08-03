@@ -1,7 +1,6 @@
-import json
 import re
 import sys
-from unittest import result
+
 
 def mergeSortedArrays(arr1: list[int], arr2: list[int]) -> list[int]:
     arr1Length = len(arr1)
@@ -49,10 +48,12 @@ def parseCommandLineArgs(input: str) -> tuple[list, list]:
         sortedArr1 = list(map(int, result[0].split(",")))
         sortedArr2 = list(map(int, result[1].split(",")))
     except:
-        print(f"""
-        Invalid input: Failed to parse the input into list of integers
-        Inputs passed: Array1: {result[0]} Array2: {result[1]}
-        """)
+        print(
+            f"""
+                Invalid input: Failed to parse the input into list of integers
+                Inputs passed: Array1: {result[0]} Array2: {result[1]}
+            """
+        )
         raise
 
     return (sortedArr1, sortedArr2)
@@ -62,7 +63,7 @@ def main():
     try:
         commandLineArgs = sys.argv[1:]
         listsToMerge = parseCommandLineArgs(commandLineArgs)
-        
+
         if (len(listsToMerge) == 2):
             mergedArray = mergeSortedArrays(listsToMerge[0], listsToMerge[1])
             print(mergedArray)
