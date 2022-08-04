@@ -1,7 +1,5 @@
 FROM python:3
 
-ADD merge-two-sorted-arrays.py /
+ADD code/merge_two_sorted_arrays.py /
 
-RUN pip install pystrich
-
-ENTRYPOINT [ "python", "./merge-two-sorted-arrays.py"]CMD [ "[1,2]", "[3,4,5]" ]
+ENTRYPOINT [ "python", "./merge_two_sorted_arrays.py"]

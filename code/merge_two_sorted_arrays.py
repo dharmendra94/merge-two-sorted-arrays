@@ -1,7 +1,6 @@
 import re
 import sys
 
-
 def mergeSortedArrays(arr1: list[int], arr2: list[int]) -> list[int]:
     arr1Length = len(arr1)
     arr2Length = len(arr2)
@@ -33,10 +32,10 @@ def mergeSortedArrays(arr1: list[int], arr2: list[int]) -> list[int]:
     return result
 
 
-def parseCommandLineArgs(input: str) -> tuple[list, list]:
-    regex = r'(?<=\[).+?(?=\])'
-    searchStr = ''.join(input)
-    result = re.findall(regex, searchStr)
+def parseCommandLineArgs(input: str) -> tuple[list[int], list[int]]:
+    # Regular expression to find the content groups between square brackets
+    regex = r'\[(.*?)\]'
+    result = re.findall(regex, ''.join(input))
 
     # Should throw an error if user sends command line args of length not equal to 2
     if (len(result) != 2):
@@ -45,8 +44,8 @@ def parseCommandLineArgs(input: str) -> tuple[list, list]:
         """)
 
     try:
-        sortedArr1 = list(map(int, result[0].split(",")))
-        sortedArr2 = list(map(int, result[1].split(",")))
+        parseInt = lambda item: list(map(int, item.split(",")) if item != '' else [])
+        sortedArr1, sortedArr2 = map(parseInt, result)
     except:
         print(
             f"""
@@ -60,15 +59,14 @@ def parseCommandLineArgs(input: str) -> tuple[list, list]:
 
 
 def main():
-    try:
+    
         commandLineArgs = sys.argv[1:]
         listsToMerge = parseCommandLineArgs(commandLineArgs)
 
         if (len(listsToMerge) == 2):
             mergedArray = mergeSortedArrays(listsToMerge[0], listsToMerge[1])
             print(mergedArray)
-    except Exception as e:
-        print(e)
+    
 
 
 if __name__ == "__main__":
