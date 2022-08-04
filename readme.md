@@ -13,8 +13,8 @@ In order to run this container you'll need docker installed.
 
 ### Run unit tests
 
-While you are in root directory of the project, execute the command below to run all the unit tests
-Note: You should have python version >=3.x installed
+While you are in root directory of the project, execute the command below to run all the unit tests.
+##### Note: You should have python version >=3.x installed
 
 ```shell
 py -m unittest
